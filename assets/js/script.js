@@ -68,10 +68,22 @@ function runGame(gameType) {
 // function checkAnswer {
 
 // }
+/**
+ * Gets the 2 numbers from the dom and the operator, determines what sum to run
+ * and returns the answer
+ */
+function calculateCorrectAnswer() {
+    let operand1 = parseInt(document.getElementById('operand1').innerText);
+    let operand2 = parseInt(document.getElementById('operand2').innerText);
+    let operator = document.getElementById('operator').innerText;
 
-// function calculateCorrectAnswer {
-
-// }
+    if (operator === "+") {
+        return [operand1 + operand2, "addition"];
+    } else {
+        alert(`unimplement operator ${operator}`)
+        throw `unimplement operator ${operator}. aborting!`
+    }
+}
 
 // function incrementScore {
 
