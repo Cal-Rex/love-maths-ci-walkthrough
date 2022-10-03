@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let button of buttons){
         button.addEventListener("click", function() {
             if (this.getAttribute("data-type") === "submit") {
-                alert("you clicked submit!");
+                checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
@@ -65,9 +65,20 @@ function runGame(gameType) {
     }
 }
 
-// function checkAnswer {
-
-// }
+/** Checks the answer againt the first element in the returned
+ * calculateCorrectAnswer array
+  */
+function checkAnswer() {
+    let userAnswer = parseInt(document.getElementById('answer-box').value);
+    let calculatedAnswer = calculateCorrectAnswer();
+    let isCorrect = userAnswer === calculatedAnswer[0];
+    if(isCorrect) {
+        alert("hey you got it right!"); 
+    } else {
+        alert(`woops! the answer was actually ${userAnswer}. it was actully ${calculatedAnswer[0]}`)
+    }
+    runGame(calculatedAnswer[1]);
+}
 /**
  * Gets the 2 numbers from the dom and the operator, determines what sum to run
  * and returns the answer
